@@ -3,6 +3,7 @@ import pymupdf
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 inpath = "./data/inputm.pdf"
@@ -12,7 +13,7 @@ api_key = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 models = ["gemma-3n-e4b-it","gemma-3-4b-it","gemini-1.5-flash","gemini-2.0-flash","gemini-2.0-flash-lite"]
 
-model_info = client.models.get(model=f"{models[4]}")
+model_info = client.models.get(model=f"{models[2]}")
 
 prompt = "Please analyze the text and provide a clear and concise summary that includes: " \
 "The main purpose and scope of the contract. Key parties involved. Important clauses including: " \
@@ -59,38 +60,39 @@ def generate_response(pdf_text,prompt,model):
 )   
     return response
 
-
-
-
+print("Extracting text from pdf...")
 
 pdtxt = extract_text_from_pdf(inpath)
+
+print("Converting to chunks...")
 chunks = chunk_text(pdtxt)
+
+print("Summarizing Chunks...")
 sum_chunks = summarize_chunks(chunks)
-res = generate_response(sum_chunks,prompt,models[4])
+
+print("Generating Response...")
+res = generate_response(sum_chunks,prompt,models[2])
 
 print(res.text)
 
+print("Setting up Queries....")
+chat = client.chats.create(model = models[2])
 
+additional_prompt = "The text is from a contract and answer my following questions briefly dont over " \
+"elaborate unless asked to and also add references"
 
-# total_tokens = client.models.count_tokens(
-#     model=f"{models[0]}",  # or the model you are using
-#     contents=pdtxt
-# )
+chat.send_message(pdtxt + additional_prompt)
 
-# print(total_tokens)
-
-# summarize_chunks(chunks)
-
-
-# res = generate_response(pdtxt)
-# usage_info = res.usage_metadata
-
-
-# print(res.text)
-# print(f"Prompt Tokens: {usage_info.prompt_token_count}")
-# print(f"Response (Candidate) Tokens: {usage_info.candidates_token_count}")
-# print(f"Total Tokens Used: {usage_info.total_token_count}")
-
+while True:
+    ch = input("Any Queries... ?\n")
+    
+    match ch:
+        case "exit":
+            print("Thank You :)\nExiting....")
+            break
+        case _:
+            res = chat.send_message(ch)
+            print(res.text)
 
 
 
