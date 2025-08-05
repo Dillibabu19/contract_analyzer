@@ -1,0 +1,51 @@
+Here's a concise summary of the employment agreement, highlighting key aspects:
+
+**Purpose and Scope:** This employment agreement outlines the terms and conditions of Gaurav Malik's employment as Chief Marketing Officer (CMO) at Crove Inc., effective January 2nd, 2022. It covers responsibilities, compensation, benefits, and obligations for both parties.
+
+**Key Parties:**
+
+*   **Employer:** Crove Inc., represented by Gourav Manchanda.
+*   **Employee:** Gaurav Malik.
+
+**Important Clauses & Critical Obligations:**
+
+*   **Position & Responsibilities:** CMO, responsible for marketing campaigns, leading Performance Marketing and SEO teams.
+*   **Compensation:** ₹18,00,000.00 per annum, paid according to standard schedules, subject to statutory deductions and annual review. Reimbursement of reasonable work expenses with receipts.
+*   **Vacation:** 24 days per year.
+*   **Probation Period:** 30 days. During this period, employment can be terminated without notice.
+*   **Employee Obligations:**
+    *   **Prohibited Activities:** No theft, fraud, misrepresentation, illicit activities, or attempting to defraud the Employer.   
+    *   **Outside Employment:** Cannot engage in other employment or business activities.
+    *   **Policy Compliance:** Must adhere to all company policies, including Leave and Sexual Harassment policies.
+    *   **Sexual Harassment:** Absolutely prohibited.
+*   **Deliverables & Obligations (Gaurav Malik):**
+    *   Perform duties to the best of their ability, complying with all company policies.
+    *   Lead marketing teams and campaigns.
+    *   Maintain confidentiality of company information.
+    *   Not engage in related activities for one year after termination without prior written consent.
+    *   Assign all intellectual property created during employment to Crove Inc.
+*   **Intellectual Property:** All work is "works made for hire" and assigned to Crove Inc.
+*   **Competing Business Restrictions:** No related activities for one year after termination without prior written consent.        
+*   **Confidentiality:** Must not disclose confidential company information even after employment ends.
+*   **Termination:**
+    *   **Employee:** 30 days' written notice required.
+    *   **Employer:** 1 month's salary payment can be made in lieu of cause.
+    *   **Return of Property:** Employee must return all company property upon termination.
+*   **Financial Commitments:**
+    *   **Salary:** ₹18,00,000.00 per annum.
+    *   **Reimbursement:** Reasonable work expenses with receipts.
+*   **Deadlines & Important Dates:**
+    *   **Start Date:** January 2nd, 2022.
+    *   **Probation Period:** First 30 days.
+    *   **Performance Reviews:** At least once per year.
+    *   **Termination Notice (Employee):** 30 days.
+*   **Confidentiality:** Employees must not disclose any confidential company information after the termination of the agreement.   
+*   **Liability & Dispute Resolution:**
+    *   **Remedies:** Employer can discontinue payments and seek legal action for breaches (paragraphs 7 to 10).
+    *   **Governing Law:** Laws of the Union of India and the state of Chandigarh.
+*   **Special Conditions:** None explicitly stated, but the employment is contingent upon compliance with company policies and the obligations outlined.
+*   **Warranties:** The employee warrants to perform the work with the best of their ability.
+*   **Total Cost:** ₹18,00,000.00 annual salary, plus potential for reimbursed expenses.
+
+model_info.input_token_limit=1048576
+model_info.output_token_limit=8192
