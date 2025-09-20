@@ -1,5 +1,6 @@
 import { useState, useRef, type SVGProps, useEffect } from "react";
 import { storage, bucketId, ID } from "../lib/appwrite";
+import Header from "../components/header";
 import { sendFileUrl } from "../services/api";
 import { sendQuery } from "../services/api";
 import type { JSX } from "react/jsx-runtime";
@@ -256,14 +257,15 @@ export default function Main() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 font-sans text-white">
       {/* Header */}
-      <header className="p-6 border-b border-slate-700 shadow-md">
+      <Header />
+      {/* <header className="p-6 border-b border-slate-700 shadow-md">
         <h1 className="text-2xl font-extrabold text-center bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent tracking-wide">
           PaperPal AI
         </h1>
         <p className="text-sm text-center text-slate-400 mt-1">
           Upload a document and chat with it
         </p>
-      </header>
+      </header> */}
 
       {/* Upload Section */}
       <section className="p-6 border-b border-slate-700 bg-slate-800/50 backdrop-blur-sm">
