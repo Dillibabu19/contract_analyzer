@@ -17,8 +17,10 @@
 // }
 
 import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  // const navigate = useNavigate();
   // simulate authentication state
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +28,7 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
-    <header className="p-6 border-b border-slate-700 shadow-md">
+    <header className="p-6 relative z-50 border-b border-slate-700 shadow-md">
       <div className="flex items-center justify-between">
         {/* Left: User button */}
         <div className="relative">

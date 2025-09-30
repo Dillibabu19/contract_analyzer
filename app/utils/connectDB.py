@@ -5,7 +5,6 @@ import bcrypt
 
 load_dotenv()
 
-
 def make_connection():
     conn = psycopg2.connect(
         dbname=os.getenv("dbname"),

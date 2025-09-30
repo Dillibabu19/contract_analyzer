@@ -59,9 +59,9 @@ export default function Main() {
       const response = await storage.createFile(bucketId, ID.unique(), file);
       const result = storage.getFileView(bucketId, response.$id);
       setFileUrl(result);
-      console.log("URl : ", fileUrl);
+      console.log("URl : ", result);
 
-      sendFileUrl(fileUrl);
+      sendFileUrl(fileUrl, file.name, response.$id);
       setUploadStatus(`File "${file.name}" uploaded successfully!`);
       setFileUploaded(true);
       setChatHistory([
