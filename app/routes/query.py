@@ -10,5 +10,6 @@ async def ask_question(payload: dict):
     if not question:
         return {"Error": "No question provided"}
     relevant_chunks = retrive_data_from_vector_db(question)
+    print(relevant_chunks)
     answer = generate_answer(question,relevant_chunks)
     return answer

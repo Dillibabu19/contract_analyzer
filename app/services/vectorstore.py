@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from app.utils.textsplitter import split_text
 import os
 
@@ -8,13 +9,9 @@ load_dotenv()
 
 vectorstore = None
 
-def store_in_vector_db(text,doc_id):
-    GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")
-
-    if not GOOGLE_API_KEY:
-        raise ValueError("Api Key Not Found")
-    
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",api_key=GOOGLE_API_KEY)
+def store_in_vector_db(text,doc_id):    
+    model_name = "sentence-transformers/all-MiniLM-L6-v2"
+    embeddings = HuggingFaceEmbeddings(model_name=model_name)
     global vectorstore
     chunks = split_text(text)
     if vectorstore is None:
@@ -22,10 +19,6 @@ def store_in_vector_db(text,doc_id):
 
     else:
         vectorstore = vectorstore.add_texts(chunks, metadatas=[{"doc_id": doc_id}] * len(chunks))
-
-    print("📦 Number of docs in vectorstore:", len(vectorstore.index_to_docstore_id))
-
-
 
 def retrive_data_from_vector_db(query):
     global vectorstore

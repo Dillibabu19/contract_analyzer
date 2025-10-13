@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { storage, bucketId, ID } from "../lib/appwrite";
 import { sendFileUrl, sendQuery } from "../services/api";
+import Header from "../components/header";
 
 export default function Main() {
   const [file, setFile] = useState<File | null>(null);
@@ -49,39 +50,42 @@ export default function Main() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Prototype Document Chat</h2>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
-      <p>{status}</p>
+    <>
+      <Header />
+      <div style={{ padding: 20 }}>
+        <h2>Prototype Document Chat</h2>
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleUpload}>Upload</button>
+        <p>{status}</p>
 
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: 10,
-          marginTop: 10,
-          height: 200,
-          overflowY: "auto",
-        }}
-      >
-        {messages.map((m, i) => (
-          <p key={i}>
-            <b>{m.sender}:</b> {m.text}
-          </p>
-        ))}
+        <div
+          style={{
+            border: "1px solid #ccc",
+            padding: 10,
+            marginTop: 10,
+            height: 200,
+            overflowY: "auto",
+          }}
+        >
+          {messages.map((m, i) => (
+            <p key={i}>
+              <b>{m.sender}:</b> {m.text}
+            </p>
+          ))}
+        </div>
+
+        <form onSubmit={handleAsk} style={{ marginTop: 10 }}>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Ask something..."
+            disabled={!fileUploaded}
+          />
+          <button type="submit" disabled={!fileUploaded}>
+            Send
+          </button>
+        </form>
       </div>
-
-      <form onSubmit={handleAsk} style={{ marginTop: 10 }}>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ask something..."
-          disabled={!fileUploaded}
-        />
-        <button type="submit" disabled={!fileUploaded}>
-          Send
-        </button>
-      </form>
-    </div>
+    </>
   );
 }

@@ -5,15 +5,10 @@ def create_user(username, email, password):
     conn = make_connection()
     cur = conn.cursor()
     try:
-        # Check if user already exists
         cur.execute("SELECT id FROM users WHERE username = %s OR email = %s", (username, email))
         if cur.fetchone():
             return {"Error": "User with this username or email already exists"}
-
-        # Hash password
         hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt(12))
-
-        # Insert new user
         cur.execute(
             "INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s)",
             (username, email, hashed.decode("utf-8"))
@@ -32,7 +27,6 @@ def create_user(username, email, password):
 def check_user(username=None, email=None, password=None):
     if not password:
         return {"Error": "Password is required"}
-
     conn = make_connection()
     cur = conn.cursor()
     try:
@@ -42,19 +36,17 @@ def check_user(username=None, email=None, password=None):
             cur.execute("SELECT password_hash FROM users WHERE email = %s", (email,))
         else:
             return {"Error": "Username or Email required"}
-
         row = cur.fetchone()
         if not row:
             return {"Error": "User not found"}
-
         stored_hash = row[0]
         if bcrypt.checkpw(password.encode("utf-8"), stored_hash.encode("utf-8")):
             return {"Success": True}
         else:
             return {"Success": False}
-
+        
     except Exception as e:
-        return {"Error": f"Error while checking user"}
+        return {"Error": f"Error while checking user {e}"}
     finally:
         cur.close()
         conn.close()

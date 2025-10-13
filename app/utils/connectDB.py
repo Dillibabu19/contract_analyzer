@@ -6,11 +6,14 @@ import bcrypt
 load_dotenv()
 
 def make_connection():
-    conn = psycopg2.connect(
-        dbname=os.getenv("dbname"),
-        user=os.getenv("user"),
-        password=os.getenv("password"),
-        host=os.getenv("host"),
-        port=os.getenv("port")
-    )
+    try:
+        conn = psycopg2.connect(
+            dbname=os.getenv("dbname"),
+            user=os.getenv("user"),
+            password=os.getenv("password"),
+            host=os.getenv("host"),
+            port=os.getenv("port")
+        )
+    except Exception as e:
+        raise ConnectionRefusedError(f"Failed to connect with error {e}")
     return conn
