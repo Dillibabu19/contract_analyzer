@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_Base = "http://localhost:8000";
+const API_Base = import.meta.env.VITE_BASE_URL;
 
 export const signUpUser = async (
   username: string,

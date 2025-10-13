@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_Base = "http://localhost:8000";
+const API_Base = import.meta.env.VITE_BASE_URL;
 
 export const sendFileUrl = async (url: string, name: string, id: string) => {
   return axios.post(`${API_Base}/pdf/upload_pdf`, {

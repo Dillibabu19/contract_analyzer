@@ -16,7 +16,6 @@ def store_in_vector_db(text,doc_id):
     chunks = split_text(text)
     if vectorstore is None:
         vectorstore = FAISS.from_texts(chunks, embedding=embeddings, metadatas=[{"doc_id": doc_id}] * len(chunks))
-
     else:
         vectorstore = vectorstore.add_texts(chunks, metadatas=[{"doc_id": doc_id}] * len(chunks))
 
